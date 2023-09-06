@@ -6,6 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import KeyPad from './Keypad';
 import Header from './Header';
+import { BASE_URL } from '../utils/Constants';
 
 import styled from '@emotion/styled';
 
@@ -83,7 +84,7 @@ const Calculator = () => {
         operator: operator
       };
 
-      const response = await fetch('http://localhost:6001/api/calculation', {
+      const response = await fetch(`${BASE_URL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

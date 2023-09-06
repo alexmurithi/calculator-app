@@ -9,6 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Header from './Header';
 import { useEffect } from 'react';
+import { BASE_URL } from '../utils/Constants';
 
 const columns = [
   { id: 'operand1', label: 'First Operand', minWidth: 100 },
@@ -32,12 +33,11 @@ export default function StickyHeadTable() {
 
   const fetchOperations = async () => {
     try {
-      // Make a GET request to your API endpoint to fetch operations
-      const response = await fetch('http://localhost:6001/api/calculation');
+      const response = await fetch(`${BASE_URL}`);
 
       if (response.ok) {
         const data = await response.json();
-        setOperations(data); // Update the operations state with fetched data
+        setOperations(data);
       } else {
         console.error('Failed to fetch operations from the database.');
       }
